@@ -35,8 +35,8 @@ public class User {
 	private String password;
 	
 	private String role;
-	
-	@AssertTrue(message = "Please check the T&C")
+
+
 	private boolean enabled;
 	
 	private String imgUrl;
