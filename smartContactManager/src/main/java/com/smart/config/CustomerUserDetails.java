@@ -12,8 +12,8 @@ public class CustomerUserDetails implements UserDetails {
 
     private User user;
 
-    public CustomerUserDetails(User user) {
-        this.user = user;
+    public CustomerUserDetails(User user1) {
+        this.user = user1;
     }
 
     @Override
