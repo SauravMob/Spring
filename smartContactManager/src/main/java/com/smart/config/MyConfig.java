@@ -29,7 +29,11 @@ public class MyConfig {
 		http
 				.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(auth -> auth.requestMatchers("/user/**").hasAuthority("USER")
-						.anyRequest().permitAll()).formLogin(Customizer.withDefaults());
+						.anyRequest().permitAll())
+				.formLogin(formLogin -> formLogin.loginPage("/signin")
+						.loginProcessingUrl("/doLogin")
+						.defaultSuccessUrl("/user/index")
+						.failureUrl("/login-failure"));
 		return http.build();
 	}
 

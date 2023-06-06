@@ -111,5 +111,19 @@ public class Contact {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Contact{" +
+				"cid=" + cid +
+				", name='" + name + '\'' +
+				", secondName='" + secondName + '\'' +
+				", work='" + work + '\'' +
+				", email='" + email + '\'' +
+				", phone='" + phone + '\'' +
+				", image='" + image + '\'' +
+				", description='" + description + '\'' +
+				", user=" + user +
+				'}';
+	}
 }
