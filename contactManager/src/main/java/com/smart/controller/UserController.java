@@ -120,11 +120,18 @@ public class UserController {
     @GetMapping("/delete/{cid}")
     @Transactional
     public String deleteContact(@PathVariable("cid") Integer cid, Model model, HttpSession session, Principal principal) {
-        Contact contact = this.contactRepository.findById(cid).get();
-        User user = this.userRepository.getUserByUserName(principal.getName());
-        user.getContacts().remove(contact);
-        this.userRepository.save(user);
-        session.setAttribute("message", new Message("Contact deleted succefully!!", "success"));
+        Optional<Contact> optionalContact = this.contactRepository.findById(cid);
+        if (optionalContact.isPresent()) {
+            Contact contact = optionalContact.get();
+            System.out.println("Contect:" + contact + cid);
+            User user = this.userRepository.getUserByUserName(principal.getName());
+            user.getContacts().remove(contact);
+            this.userRepository.save(user);
+            session.setAttribute("message", new Message("Contact deleted succefully!!", "success"));
+        } else {
+            // Handle the case where the contact is not found
+            System.out.println("Contact not found");
+        }
         return "redirect:/user/show-contacts/0";
     }
 

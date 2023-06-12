@@ -113,22 +113,13 @@ public class Contact {
 	}
 
 	@Override
-	public String toString() {
-		return "Contact{" +
-				"cid=" + cid +
-				", name='" + name + '\'' +
-				", secondName='" + secondName + '\'' +
-				", work='" + work + '\'' +
-				", email='" + email + '\'' +
-				", phone='" + phone + '\'' +
-				", image='" + image + '\'' +
-				", description='" + description + '\'' +
-				", user=" + user +
-				'}';
-	}
-
-	@Override
 	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
 		return this.cid==((Contact)obj).getCid();
 	}
 
